@@ -15,10 +15,26 @@
         android:id="@+id/textView"/>
 
     <Button
-        android:id="@+id/btnGoToSecondActivity"
+        android:id="@+id/btnGambling"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView"
         android:layout_centerInParent="true"
-        android:text="open activity 2" />
+        android:text="Play" />
+
+    <Button
+        android:id="@+id/btnAddFounds"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnGambling"
+        android:layout_centerInParent="true"
+        android:text="Add Founds" />
+
+    <Button
+        android:id="@+id/btnInstructions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnAddFounds"
+        android:layout_centerInParent="true"
+        android:text="Instructions" />
 </RelativeLayout>
