@@ -7,25 +7,59 @@ import android.view.View;
 import android.widget.Button;
 import android.content.Intent;
 
+// pagina principala
 public class MainActivity extends AppCompatActivity {
-    private Button btnGoToSecondActivity;
+    // butonul catre pagina de gambling aka pacanele
+    private Button btnGambling;
+
+    // butonul catre pagina de add founds
+    private Button btnAddFounds;
+
+    // butonul catre pagina de instructiuni
+    private Button btnInstructions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnGoToSecondActivity = (Button) findViewById(R.id.btnGoToSecondActivity);
-        btnGoToSecondActivity.setOnClickListener(new View.OnClickListener(){
+        btnGambling = findViewById(R.id.btnGambling);
+        btnGambling.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                openActivity2();
+                openStart();
+            }
+        });
+
+        btnAddFounds = findViewById(R.id.btnAddFounds);
+        btnAddFounds.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                openAddFounds();
+            }
+        });
+
+        btnInstructions = findViewById(R.id.btnInstructions); // Corectare: Asociază butonul de instrucțiuni cu id-ul corespunzător
+        btnInstructions.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                openInstructions();
             }
         });
     }
 
-    public void openActivity2(){
-        Intent intent = new Intent(this, SecondActivity.class);
+    public void openStart(){
+        Intent intent = new Intent(this, GamblingActivity.class);
+        startActivity(intent);
+    }
+
+    public void openAddFounds(){
+        Intent intent = new Intent(this, AddFoundsActivity.class);
+        startActivity(intent);
+    }
+
+    public void openInstructions(){
+        Intent intent = new Intent(this, InstructionsActivity.class);
         startActivity(intent);
     }
 }

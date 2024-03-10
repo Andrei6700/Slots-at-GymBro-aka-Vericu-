@@ -7,18 +7,16 @@ import android.view.View;
 import android.widget.Button;
 import android.content.Intent;
 
-
-public class SecondActivity extends AppCompatActivity {
-
-    private Button btnGoToMainActivity;
+public class AddFoundsActivity extends AppCompatActivity {
+    private Button btnGoToMainMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_second);
+        setContentView(R.layout.activity_add_founds);
 
-        btnGoToMainActivity = (Button) findViewById(R.id.btnGoToMainActivity);
-        btnGoToMainActivity.setOnClickListener(new View.OnClickListener(){
+        btnGoToMainMenu = (Button) findViewById(R.id.btnGoToMainMenu);
+        btnGoToMainMenu.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 openActivity1();
