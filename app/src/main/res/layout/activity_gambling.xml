@@ -1,25 +1,172 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pagina de gambling"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:id="@+id/textView2"/>
+    <LinearLayout
+        android:layout_width="286dp"
+        android:layout_height="70dp">
 
-    <Button
-        android:id="@+id/btnGoToMainMenu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView2"
-        android:layout_centerInParent="true"
-        android:text="go to Main Menu" />
+        <TextView
+            android:id="@+id/txt_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_founds"
+            android:padding="20dp"
+            android:text="1000"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/btnGoToMainMenu"
+            android:layout_width="177dp"
+            android:layout_height="wrap_content"
+            android:text="go to Main Menu" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/frame_bar"
+        android:layout_width="634dp"
+        android:layout_height="306dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="49dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="18dp"
+        android:background="@drawable/frame">
+x
+
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    >
+        <com.example.pacanele.ImageScrolling.ImageScrolling
+            android:id="@+id/image"
+            android:layout_width="80dp"
+            android:layout_height="108dp"
+            android:layout_gravity="top" />
+
+            <com.example.pacanele.ImageScrolling.ImageScrolling
+                android:id="@+id/image2"
+                android:layout_width="80dp"
+                android:layout_height="109dp"
+                android:layout_gravity="top" />
+
+            <com.example.pacanele.ImageScrolling.ImageScrolling
+                android:id="@+id/image3"
+                android:layout_width="80dp"
+                android:layout_height="109dp"
+                android:layout_gravity="top" />
+
+        <com.example.pacanele.ImageScrolling.ImageScrolling
+            android:id="@+id/image4"
+            android:layout_width="80dp"
+            android:layout_height="109dp"
+            android:layout_gravity="top" />
+
+        <com.example.pacanele.ImageScrolling.ImageScrolling
+            android:id="@+id/image5"
+            android:layout_width="80dp"
+            android:layout_height="109dp"
+            android:layout_gravity="top" />
+</LinearLayout>
+<!--        randul 2-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <com.example.pacanele.ImageScrolling.ImageScrolling
+                android:id="@+id/image6"
+                android:layout_width="80dp"
+                android:layout_height="108dp"
+                android:layout_gravity="bottom|center"/>
+
+                <com.example.pacanele.ImageScrolling.ImageScrolling
+                    android:id="@+id/image9"
+                    android:layout_width="80dp"
+                    android:layout_height="108dp"
+                    android:layout_gravity="bottom|center" />
+
+            <com.example.pacanele.ImageScrolling.ImageScrolling
+                android:id="@+id/image7"
+                android:layout_width="80dp"
+                android:layout_height="108dp"
+                android:layout_gravity="bottom|center" />
+
+            <com.example.pacanele.ImageScrolling.ImageScrolling
+                android:id="@+id/image8"
+                android:layout_width="80dp"
+                android:layout_height="108dp"
+                android:layout_gravity="bottom|center" />
+
+            <com.example.pacanele.ImageScrolling.ImageScrolling
+                android:id="@+id/image10"
+                android:layout_width="80dp"
+                android:layout_height="108dp"
+                android:layout_gravity="bottom|center" />
+        </LinearLayout>
+
+        <!--        randul 3-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center">
+
+            <com.example.pacanele.ImageScrolling.ImageScrolling
+                android:id="@+id/image11"
+                android:layout_width="80dp"
+                android:layout_height="108dp"
+                android:layout_gravity="bottom|center"/>
+
+            <com.example.pacanele.ImageScrolling.ImageScrolling
+                android:id="@+id/image12"
+                android:layout_width="80dp"
+                android:layout_height="108dp"
+                android:layout_gravity="bottom|center" />
+
+            <com.example.pacanele.ImageScrolling.ImageScrolling
+                android:id="@+id/image13"
+                android:layout_width="80dp"
+                android:layout_height="108dp"
+                android:layout_gravity="bottom|center" />
+
+            <com.example.pacanele.ImageScrolling.ImageScrolling
+                android:id="@+id/image14"
+                android:layout_width="80dp"
+                android:layout_height="108dp"
+                android:layout_gravity="bottom|center" />
+
+            <com.example.pacanele.ImageScrolling.ImageScrolling
+                android:id="@+id/image15"
+                android:layout_width="80dp"
+                android:layout_height="108dp"
+                android:layout_gravity="bottom|center" />
+        </LinearLayout>
+    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/btn_start"
+        android:layout_width="26dp"
+        android:layout_height="79dp"
+        android:layout_marginLeft="-40dp"
+        android:layout_marginTop="50dp"
+        android:layout_toRightOf="@+id/frame_bar"
+        android:src="@drawable/start" />
+
+    <ImageView
+        android:id="@+id/btn_stop"
+        android:layout_width="26dp"
+        android:layout_height="79dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="-40dp"
+        android:layout_marginBottom="40dp"
+        android:layout_toRightOf="@+id/frame_bar"
+        android:visibility="gone"
+        android:src="@drawable/stop" />
 
 </RelativeLayout>

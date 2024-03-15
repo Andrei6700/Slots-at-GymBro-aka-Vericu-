@@ -2,30 +2,144 @@ package com.example.pacanele;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.content.Intent;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
-public class GamblingActivity extends AppCompatActivity {
+import com.example.pacanele.ImageScrolling.IEventEnd;
+import com.example.pacanele.ImageScrolling.ImageScrolling;
 
-    private Button btnGoToMainMenu;
+import java.util.Random;
+
+public class GamblingActivity extends AppCompatActivity implements IEventEnd {
+    ImageView btn_stop,btn_start;
+    ImageScrolling image,image2,image3,image4, image5,image6, image7, image8, image9, image10, image11, image12, image13, image14, image15;
+    TextView txt_score;
+    int count_done = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gambling);
 
-        btnGoToMainMenu = (Button) findViewById(R.id.btnGoToMainMenu);
-        btnGoToMainMenu.setOnClickListener(new View.OnClickListener(){
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
+        btn_stop = (ImageView) findViewById(R.id.btn_stop);
+        btn_start = (ImageView) findViewById(R.id.btn_start);
+
+        image = (ImageScrolling) findViewById(R.id.image);
+        image2 = (ImageScrolling) findViewById(R.id.image2);
+        image3 = (ImageScrolling) findViewById(R.id.image3);
+        image4 = (ImageScrolling) findViewById(R.id.image4);
+        image5 = (ImageScrolling) findViewById(R.id.image5);
+        image6 = (ImageScrolling) findViewById(R.id.image6);
+        image7 = (ImageScrolling) findViewById(R.id.image7);
+        image8 = (ImageScrolling) findViewById(R.id.image8);
+        image9 = (ImageScrolling) findViewById(R.id.image9);
+        image10 = (ImageScrolling) findViewById(R.id.image10);
+        image11 = (ImageScrolling) findViewById(R.id.image11);
+        image12 = (ImageScrolling) findViewById(R.id.image12);
+        image13 = (ImageScrolling) findViewById(R.id.image13);
+        image14 = (ImageScrolling) findViewById(R.id.image14);
+        image15 = (ImageScrolling) findViewById(R.id.image15);
+
+
+
+        txt_score = (TextView) findViewById(R.id.txt_score);
+
+        image.setEventEnd(GamblingActivity.this);
+        image2.setEventEnd(GamblingActivity.this);
+        image3.setEventEnd(GamblingActivity.this);
+        image4.setEventEnd(GamblingActivity.this);
+        image5.setEventEnd(GamblingActivity.this);
+        image6.setEventEnd(GamblingActivity.this);
+        image7.setEventEnd(GamblingActivity.this);
+        image8.setEventEnd(GamblingActivity.this);
+        image9.setEventEnd(GamblingActivity.this);
+        image10.setEventEnd(GamblingActivity.this);
+        image11.setEventEnd(GamblingActivity.this);
+        image12.setEventEnd(GamblingActivity.this);
+        image13.setEventEnd(GamblingActivity.this);
+        image14.setEventEnd(GamblingActivity.this);
+        image15.setEventEnd(GamblingActivity.this);
+
+
+
+        btn_start.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
-                openActivity1();
+            public void onClick(View view) {
+                if (FoundsStore.SCORE>= 50) //50 is min price to roll
+                {
+                    btn_start.setVisibility(View.GONE);
+                    btn_stop.setVisibility(View.VISIBLE);
+
+                    image.setValueRandom(new Random().nextInt(6),  //because we have 6 image so we will random 6
+                            new Random().nextInt((15 - 5) + 1) + 5); // here we will random from range 5 to 15 for rotate count
+                    image2.setValueRandom(new Random().nextInt(6),  //because we have 6 image so we will random 6
+                            new Random().nextInt((15 - 5) + 1) + 5); // here we will random from range 5 to 15 for rotate count
+                    image3.setValueRandom(new Random().nextInt(6),  //because we have 6 image so we will random 6
+                            new Random().nextInt((15 - 5) + 1) + 5); // here we will random from range 5 to 15 for rotate count
+                    image4.setValueRandom(new Random().nextInt(6),  //because we have 6 image so we will random 6
+                            new Random().nextInt((15 - 5) + 1) + 5); // here we will random from range 5 to 15 for rotate count
+                    image5.setValueRandom(new Random().nextInt(6),  //because we have 6 image so we will random 6
+                            new Random().nextInt((15 - 5) + 1) + 5); // here we will random from range 5 to 15 for rotate count
+                    image6.setValueRandom(new Random().nextInt(6),  //because we have 6 image so we will random 6
+                            new Random().nextInt((15 - 5) + 1) + 5); // here we will random from range 5 to 15 for rotate count
+                    image7.setValueRandom(new Random().nextInt(6),  //because we have 6 image so we will random 6
+                            new Random().nextInt((15 - 5) + 1) + 5); // here we will random from range 5 to 15 for rotate count
+                    image8.setValueRandom(new Random().nextInt(6),  //because we have 6 image so we will random 6
+                            new Random().nextInt((15 - 5) + 1) + 5); // here we will random from range 5 to 15 for rotate count
+                    image9.setValueRandom(new Random().nextInt(6),  //because we have 6 image so we will random 6
+                            new Random().nextInt((15 - 5) + 1) + 5); // here we will random from range 5 to 15 for rotate count
+                    image10.setValueRandom(new Random().nextInt(6),  //because we have 6 image so we will random 6
+                            new Random().nextInt((15 - 5) + 1) + 5); // here we will random from range 5 to 15 for rotate count
+                    image11.setValueRandom(new Random().nextInt(6),  //because we have 6 image so we will random 6
+                            new Random().nextInt((15 - 5) + 1) + 5); // here we will random from range 5 to 15 for rotate count
+                    image12.setValueRandom(new Random().nextInt(6),  //because we have 6 image so we will random 6
+                            new Random().nextInt((15 - 5) + 1) + 5); // here we will random from range 5 to 15 for rotate count
+                    image13.setValueRandom(new Random().nextInt(6),  //because we have 6 image so we will random 6
+                            new Random().nextInt((15 - 5) + 1) + 5); // here we will random from range 5 to 15 for rotate count
+                    image14.setValueRandom(new Random().nextInt(6),  //because we have 6 image so we will random 6
+                            new Random().nextInt((15 - 5) + 1) + 5); // here we will random from range 5 to 15 for rotate count
+                    image15.setValueRandom(new Random().nextInt(6),  //because we have 6 image so we will random 6
+                            new Random().nextInt((15 - 5) + 1) + 5); // here we will random from range 5 to 15 for rotate count
+
+                    txt_score.setText(String.valueOf(FoundsStore.SCORE));
+                } else {
+                    Toast.makeText(GamblingActivity.this, "You not enough money", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
-    public void openActivity1(){
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+    public void eventEnd(int result, int count) {
+        if (count_done < 2) //if still slot has been rolling
+            count_done++;
+        else {
+            btn_stop.setVisibility(View.GONE);
+            btn_start.setVisibility(View.VISIBLE);
+
+            count_done = 0; // restart
+
+            //calculate result
+            if (image.getValue() == image2.getValue()  && image2.getValue() == image3.getValue()) {
+                Toast.makeText(this, "You win big prize", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 300;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+            } else if (image.getValue() == image2.getValue() ||
+                    image2.getValue() == image3.getValue() ||
+                    image.getValue() == image3.getValue()) {
+                Toast.makeText(this, "You win small prize", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 100;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+
+            } else {
+                Toast.makeText(this, "You win nothing ", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE -= 100;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+            }
+        }
     }
 }
