@@ -17,7 +17,7 @@ import java.util.Random;
 
 public class GamblingActivity extends AppCompatActivity implements IEventEnd {
     private Button btnGoToMainMenu;
-    ImageView btn_stop,btn_start;
+    ImageView btn_start;
     ImageScrolling image,image2,image3,image4, image5,image6, image7, image8, image9, image10, image11, image12, image13, image14, image15;
     TextView txt_score;
     int count_done = 0;
@@ -38,7 +38,6 @@ public class GamblingActivity extends AppCompatActivity implements IEventEnd {
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
-        btn_stop = (ImageView) findViewById(R.id.btn_stop);
         btn_start = (ImageView) findViewById(R.id.btn_start);
 
         image = (ImageScrolling) findViewById(R.id.image);
@@ -84,8 +83,7 @@ public class GamblingActivity extends AppCompatActivity implements IEventEnd {
             public void onClick(View view) {
                 if (FoundsStore.SCORE>= 50) //50 is min price to roll
                 {
-                    btn_start.setVisibility(View.GONE);
-                    btn_stop.setVisibility(View.VISIBLE);
+                    btn_start.setVisibility(View.VISIBLE);
 
                     image.setValueRandom(new Random().nextInt(8),  //because we have 6 image so we will random 6
                             new Random().nextInt((15 - 5) + 1) + 5); // here we will random from range 5 to 15 for rotate count
@@ -129,26 +127,94 @@ public class GamblingActivity extends AppCompatActivity implements IEventEnd {
         if (count_done < 2) //if still slot has been rolling
             count_done++;
         else {
-            btn_stop.setVisibility(View.GONE);
             btn_start.setVisibility(View.VISIBLE);
 
             count_done = 0; // restart
 
-            //calculate result
-            if (image.getValue() == image2.getValue()  && image2.getValue() == image3.getValue()) {
+// Payline
+            if ((image.getValue() == image2.getValue() && image2.getValue() == image3.getValue() &&
+                    image3.getValue() == image4.getValue() && image4.getValue() == image5.getValue())) {
                 Toast.makeText(this, "You win big prize", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 1020;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+            }
+
+// Payline
+            else if ((image6.getValue() == image7.getValue() && image7.getValue() == image8.getValue() &&
+                    image8.getValue() == image9.getValue() && image9.getValue() == image10.getValue())) {
+                Toast.makeText(this, "You win big prize", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 1020;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+            }
+
+// Payline
+            else if ((image11.getValue() == image12.getValue() && image12.getValue() == image13.getValue() &&
+                    image13.getValue() == image14.getValue() && image14.getValue() == image15.getValue())) {
+                Toast.makeText(this, "You win big prize", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 1020;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+            }
+
+// Payline
+            else if ((image.getValue() == image7.getValue() && image7.getValue() == image13.getValue() &&
+                    image13.getValue() == image9.getValue() && image9.getValue() == image5.getValue())) {
+                Toast.makeText(this, "You win small prize", Toast.LENGTH_SHORT).show();
                 FoundsStore.SCORE += 300;
                 txt_score.setText(String.valueOf(FoundsStore.SCORE));
-            } else if (image.getValue() == image2.getValue() ||
-                    image2.getValue() == image3.getValue() ||
-                    image.getValue() == image3.getValue()) {
-                Toast.makeText(this, "You win small prize", Toast.LENGTH_SHORT).show();
-                FoundsStore.SCORE += 100;
-                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+            }
 
-            } else {
-                Toast.makeText(this, "You win nothing ", Toast.LENGTH_SHORT).show();
-                FoundsStore.SCORE -= 100;
+// Payline
+            else if ((image3.getValue() == image7.getValue() && image7.getValue() == image9.getValue() &&
+                    image9.getValue() == image11.getValue() && image11.getValue() == image13.getValue())) {
+                Toast.makeText(this, "You win small prize", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 300;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+            }
+
+// Payline
+            else if ((image.getValue() == image6.getValue() && image6.getValue() == image11.getValue() &&
+                    image11.getValue() == image10.getValue() && image10.getValue() == image15.getValue())) {
+                Toast.makeText(this, "You win big prize", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 1020;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+            }
+
+// Payline
+            else if ((image2.getValue() == image7.getValue() && image7.getValue() == image12.getValue() &&
+                    image12.getValue() == image9.getValue() && image9.getValue() == image4.getValue())) {
+                Toast.makeText(this, "You win big prize", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 1020;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+            }
+
+// Payline
+            else if ((image3.getValue() == image8.getValue() && image8.getValue() == image13.getValue() &&
+                    image13.getValue() == image10.getValue() && image10.getValue() == image5.getValue())) {
+                Toast.makeText(this, "You win big prize", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 1020;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+            }
+
+// Payline
+            else if ((image.getValue() == image7.getValue() && image7.getValue() == image13.getValue() &&
+                    image13.getValue() == image10.getValue() && image10.getValue() == image5.getValue())) {
+                Toast.makeText(this, "You win big prize", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 1020;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+            }
+
+// Payline
+            else if ((image3.getValue() == image7.getValue() && image7.getValue() == image13.getValue() &&
+                    image13.getValue() == image10.getValue() && image10.getValue() == image5.getValue())) {
+                Toast.makeText(this, "You win big prize", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 1020;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+            }
+
+// Payline
+            else {
+                Toast.makeText(this, "You win nothing", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE -= 50;
                 txt_score.setText(String.valueOf(FoundsStore.SCORE));
             }
         }

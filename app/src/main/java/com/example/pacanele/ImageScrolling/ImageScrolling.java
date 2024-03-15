@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
@@ -37,45 +38,51 @@ public class ImageScrolling extends FrameLayout {
         next_image.setTranslationY(getHeight());
     }
 
-    public void setValueRandom(int image, int rotate_count) {
-        current_image.animate().translationY(-getHeight()).setDuration(ANIMATION_DUR).start();
+    public void setValueRandom(final int image, int rotate_count) {
+        current_image.setVisibility(View.VISIBLE);
+        current_image.setTranslationY(0);
         next_image.setTranslationY(next_image.getHeight());
+
+        // Start animation for current_image to scroll up
+        current_image.animate().translationY(-getHeight()).setDuration(ANIMATION_DUR).start();
+
+        // Start animation for next_image to appear from bottom
         next_image.animate().translationY(0)
                 .setDuration(ANIMATION_DUR)
                 .setListener(new Animator.AnimatorListener() {
                     @Override
-                    public void onAnimationStart(Animator animator) {
-
-                    }
+                    public void onAnimationStart(Animator animator) {}
 
                     @Override
                     public void onAnimationEnd(Animator animator) {
-                        setImage(current_image, old_value % 8); // because we have 6 image, so we will mod for 6
+                        // Set image for current_image based on old_value modulo 6
+                        setImage(current_image, old_value % 6);
+
+                        // Reset translations of both current_image and next_image
                         current_image.setTranslationY(0);
+                        next_image.setTranslationY(next_image.getHeight());
+
+                        // If old_value is not equal to rotate_count, continue rolling
                         if (old_value != rotate_count) {
-                            //if old_value still not equal roatate count, we will still roll
                             setValueRandom(image, rotate_count);
                             old_value++;
-                        } else  // if roatate is reached
-                        {
+                        } else {
+                            // If rotation count is reached, set image for next_image and trigger eventEnd
                             last_result = 0;
                             old_value = 0;
                             setImage(next_image, image);
-                            eventEnd.eventEnd(image % 8, rotate_count);
+                            eventEnd.eventEnd(image % 6, rotate_count);
                         }
                     }
 
                     @Override
-                    public void onAnimationCancel(Animator animator) {
-
-                    }
+                    public void onAnimationCancel(Animator animator) {}
 
                     @Override
-                    public void onAnimationRepeat(Animator animator) {
-
-                    }
+                    public void onAnimationRepeat(Animator animator) {}
                 });
     }
+
 
     private void setImage(ImageView image_view, int value) {
         if (value == SlotMachineSymbols.samsulek)
@@ -105,7 +112,7 @@ public class ImageScrolling extends FrameLayout {
             return Integer.parseInt(next_image.getTag().toString());
         } else {
             // Handle in cas if  next_image it s null
-            return -1; // or any other appropriate default value
+            return -1;
         }
     }
 }

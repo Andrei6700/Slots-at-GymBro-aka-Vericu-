@@ -7,8 +7,8 @@
     tools:context=".MainActivity">
 
     <LinearLayout
-        android:layout_width="286dp"
-        android:layout_height="70dp">
+        android:layout_width="545dp"
+        android:layout_height="72dp">
 
         <TextView
             android:id="@+id/txt_score"
@@ -24,6 +24,13 @@
             android:layout_width="177dp"
             android:layout_height="wrap_content"
             android:text="go to Main Menu" />
+
+        <Button
+            android:id="@+id/bet"
+            android:layout_width="177dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="50" />
     </LinearLayout>
 
     <FrameLayout
@@ -157,17 +164,6 @@
         android:layout_marginTop="50dp"
         android:layout_toRightOf="@+id/frame_bar"
         android:src="@drawable/start" />
-
-    <ImageView
-        android:id="@+id/btn_stop"
-        android:layout_width="26dp"
-        android:layout_height="79dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="-40dp"
-        android:layout_marginBottom="40dp"
-        android:layout_toRightOf="@+id/frame_bar"
-        android:visibility="gone"
-        android:src="@drawable/stop" />
 
 </RelativeLayout>
 
