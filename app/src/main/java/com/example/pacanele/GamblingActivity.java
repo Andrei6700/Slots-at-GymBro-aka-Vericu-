@@ -1,10 +1,11 @@
 package com.example.pacanele;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,6 +16,7 @@ import com.example.pacanele.ImageScrolling.ImageScrolling;
 import java.util.Random;
 
 public class GamblingActivity extends AppCompatActivity implements IEventEnd {
+    private Button btnGoToMainMenu;
     ImageView btn_stop,btn_start;
     ImageScrolling image,image2,image3,image4, image5,image6, image7, image8, image9, image10, image11, image12, image13, image14, image15;
     TextView txt_score;
@@ -22,8 +24,17 @@ public class GamblingActivity extends AppCompatActivity implements IEventEnd {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gambling);
+
+        btnGoToMainMenu = (Button) findViewById(R.id.btnGoToMainMenu);
+        btnGoToMainMenu.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                openActivity1();
+            }
+        });
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
@@ -76,35 +87,35 @@ public class GamblingActivity extends AppCompatActivity implements IEventEnd {
                     btn_start.setVisibility(View.GONE);
                     btn_stop.setVisibility(View.VISIBLE);
 
-                    image.setValueRandom(new Random().nextInt(6),  //because we have 6 image so we will random 6
+                    image.setValueRandom(new Random().nextInt(8),  //because we have 6 image so we will random 6
                             new Random().nextInt((15 - 5) + 1) + 5); // here we will random from range 5 to 15 for rotate count
-                    image2.setValueRandom(new Random().nextInt(6),  //because we have 6 image so we will random 6
+                    image2.setValueRandom(new Random().nextInt(8),  //because we have 6 image so we will random 6
                             new Random().nextInt((15 - 5) + 1) + 5); // here we will random from range 5 to 15 for rotate count
-                    image3.setValueRandom(new Random().nextInt(6),  //because we have 6 image so we will random 6
+                    image3.setValueRandom(new Random().nextInt(8),  //because we have 6 image so we will random 6
                             new Random().nextInt((15 - 5) + 1) + 5); // here we will random from range 5 to 15 for rotate count
-                    image4.setValueRandom(new Random().nextInt(6),  //because we have 6 image so we will random 6
+                    image4.setValueRandom(new Random().nextInt(8),  //because we have 6 image so we will random 6
                             new Random().nextInt((15 - 5) + 1) + 5); // here we will random from range 5 to 15 for rotate count
-                    image5.setValueRandom(new Random().nextInt(6),  //because we have 6 image so we will random 6
+                    image5.setValueRandom(new Random().nextInt(8),  //because we have 6 image so we will random 6
                             new Random().nextInt((15 - 5) + 1) + 5); // here we will random from range 5 to 15 for rotate count
-                    image6.setValueRandom(new Random().nextInt(6),  //because we have 6 image so we will random 6
+                    image6.setValueRandom(new Random().nextInt(8),  //because we have 6 image so we will random 6
                             new Random().nextInt((15 - 5) + 1) + 5); // here we will random from range 5 to 15 for rotate count
-                    image7.setValueRandom(new Random().nextInt(6),  //because we have 6 image so we will random 6
+                    image7.setValueRandom(new Random().nextInt(8),  //because we have 6 image so we will random 6
                             new Random().nextInt((15 - 5) + 1) + 5); // here we will random from range 5 to 15 for rotate count
-                    image8.setValueRandom(new Random().nextInt(6),  //because we have 6 image so we will random 6
+                    image8.setValueRandom(new Random().nextInt(8),  //because we have 6 image so we will random 6
                             new Random().nextInt((15 - 5) + 1) + 5); // here we will random from range 5 to 15 for rotate count
-                    image9.setValueRandom(new Random().nextInt(6),  //because we have 6 image so we will random 6
+                    image9.setValueRandom(new Random().nextInt(8),  //because we have 6 image so we will random 6
                             new Random().nextInt((15 - 5) + 1) + 5); // here we will random from range 5 to 15 for rotate count
-                    image10.setValueRandom(new Random().nextInt(6),  //because we have 6 image so we will random 6
+                    image10.setValueRandom(new Random().nextInt(8),  //because we have 6 image so we will random 6
                             new Random().nextInt((15 - 5) + 1) + 5); // here we will random from range 5 to 15 for rotate count
-                    image11.setValueRandom(new Random().nextInt(6),  //because we have 6 image so we will random 6
+                    image11.setValueRandom(new Random().nextInt(8),  //because we have 6 image so we will random 6
                             new Random().nextInt((15 - 5) + 1) + 5); // here we will random from range 5 to 15 for rotate count
-                    image12.setValueRandom(new Random().nextInt(6),  //because we have 6 image so we will random 6
+                    image12.setValueRandom(new Random().nextInt(8),  //because we have 6 image so we will random 6
                             new Random().nextInt((15 - 5) + 1) + 5); // here we will random from range 5 to 15 for rotate count
-                    image13.setValueRandom(new Random().nextInt(6),  //because we have 6 image so we will random 6
+                    image13.setValueRandom(new Random().nextInt(8),  //because we have 6 image so we will random 6
                             new Random().nextInt((15 - 5) + 1) + 5); // here we will random from range 5 to 15 for rotate count
-                    image14.setValueRandom(new Random().nextInt(6),  //because we have 6 image so we will random 6
+                    image14.setValueRandom(new Random().nextInt(8),  //because we have 6 image so we will random 6
                             new Random().nextInt((15 - 5) + 1) + 5); // here we will random from range 5 to 15 for rotate count
-                    image15.setValueRandom(new Random().nextInt(6),  //because we have 6 image so we will random 6
+                    image15.setValueRandom(new Random().nextInt(8),  //because we have 6 image so we will random 6
                             new Random().nextInt((15 - 5) + 1) + 5); // here we will random from range 5 to 15 for rotate count
 
                     txt_score.setText(String.valueOf(FoundsStore.SCORE));
@@ -141,5 +152,9 @@ public class GamblingActivity extends AppCompatActivity implements IEventEnd {
                 txt_score.setText(String.valueOf(FoundsStore.SCORE));
             }
         }
+    }
+    public void openActivity1(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }

@@ -50,7 +50,7 @@ public class ImageScrolling extends FrameLayout {
 
                     @Override
                     public void onAnimationEnd(Animator animator) {
-                        setImage(current_image, old_value % 6); // because we have 6 image, so we will mod for 6
+                        setImage(current_image, old_value % 8); // because we have 6 image, so we will mod for 6
                         current_image.setTranslationY(0);
                         if (old_value != rotate_count) {
                             //if old_value still not equal roatate count, we will still roll
@@ -61,7 +61,7 @@ public class ImageScrolling extends FrameLayout {
                             last_result = 0;
                             old_value = 0;
                             setImage(next_image, image);
-                            eventEnd.eventEnd(image % 6, rotate_count);
+                            eventEnd.eventEnd(image % 8, rotate_count);
                         }
                     }
 
