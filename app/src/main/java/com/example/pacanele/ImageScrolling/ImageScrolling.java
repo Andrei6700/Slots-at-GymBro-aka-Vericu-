@@ -2,19 +2,20 @@ package com.example.pacanele.ImageScrolling;
 
 import android.animation.Animator;
 import android.content.Context;
+import android.media.MediaPlayer;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.example.pacanele.R;
 
 public class ImageScrolling extends FrameLayout {
-    private static int ANIMATION_DUR = 150;
+    private static int ANIMATION_DUR = 300;
     ImageView current_image, next_image;
     int last_result = 0, old_value = 0;
     IEventEnd eventEnd;
+    MediaPlayer mediaPlayer;
 
     public void setEventEnd(IEventEnd eventEnd) {
         this.eventEnd = eventEnd;
@@ -36,10 +37,13 @@ public class ImageScrolling extends FrameLayout {
         next_image = (ImageView) getRootView().findViewById(R.id.next_image);
 
         next_image.setTranslationY(getHeight());
+
+        // Initialize MediaPlayer
+        mediaPlayer = MediaPlayer.create(getContext(), R.raw.rollsound);
     }
 
     public void setValueRandom(final int image, int rotate_count) {
-        current_image.setVisibility(View.VISIBLE);
+        current_image.setVisibility(VISIBLE);
         current_image.setTranslationY(0);
         next_image.setTranslationY(next_image.getHeight());
 
@@ -56,7 +60,7 @@ public class ImageScrolling extends FrameLayout {
                     @Override
                     public void onAnimationEnd(Animator animator) {
                         // Set image for current_image based on old_value modulo 6
-                        setImage(current_image, old_value % 6);
+                        setImage(current_image, old_value % 8);
 
                         // Reset translations of both current_image and next_image
                         current_image.setTranslationY(0);
@@ -71,7 +75,7 @@ public class ImageScrolling extends FrameLayout {
                             last_result = 0;
                             old_value = 0;
                             setImage(next_image, image);
-                            eventEnd.eventEnd(image % 6, rotate_count);
+                            eventEnd.eventEnd(image % 8, rotate_count);
                         }
                     }
 
@@ -81,8 +85,10 @@ public class ImageScrolling extends FrameLayout {
                     @Override
                     public void onAnimationRepeat(Animator animator) {}
                 });
-    }
 
+        // Play roll sound
+        mediaPlayer.start();
+    }
 
     private void setImage(ImageView image_view, int value) {
         if (value == SlotMachineSymbols.samsulek)

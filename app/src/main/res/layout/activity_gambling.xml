@@ -44,7 +44,6 @@
         android:layout_marginEnd="48dp"
         android:layout_marginBottom="18dp"
         android:background="@drawable/frame">
-        x
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -154,16 +153,20 @@
                 android:layout_height="108dp"
                 android:layout_gravity="bottom|center" />
         </LinearLayout>
+
+        <ImageView
+            android:id="@+id/btn_start"
+            android:layout_width="76dp"
+            android:layout_height="96dp"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="end"
+            android:layout_marginRight="2dp"
+            android:layout_marginTop="200dp"
+            android:layout_toRightOf="@+id/frame_bar"
+            android:src="@drawable/legaltren" />
     </FrameLayout>
 
-    <ImageView
-        android:id="@+id/btn_start"
-        android:layout_width="26dp"
-        android:layout_height="79dp"
-        android:layout_marginLeft="-40dp"
-        android:layout_marginTop="50dp"
-        android:layout_toRightOf="@+id/frame_bar"
-        android:src="@drawable/start" />
+
 
 </RelativeLayout>
 
