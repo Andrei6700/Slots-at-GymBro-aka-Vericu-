@@ -135,7 +135,7 @@ public class GamblingActivity extends AppCompatActivity implements IEventEnd {
             if ((image.getValue() == image2.getValue() && image2.getValue() == image3.getValue() &&
                     image3.getValue() == image4.getValue() && image4.getValue() == image5.getValue())) {
                 Toast.makeText(this, "You win big prize", Toast.LENGTH_SHORT).show();
-                FoundsStore.SCORE += 1020;
+                FoundsStore.SCORE += 0;
                 txt_score.setText(String.valueOf(FoundsStore.SCORE));
             }
 
@@ -143,7 +143,7 @@ public class GamblingActivity extends AppCompatActivity implements IEventEnd {
             else if ((image6.getValue() == image7.getValue() && image7.getValue() == image8.getValue() &&
                     image8.getValue() == image9.getValue() && image9.getValue() == image10.getValue())) {
                 Toast.makeText(this, "You win big prize", Toast.LENGTH_SHORT).show();
-                FoundsStore.SCORE += 1020;
+                FoundsStore.SCORE += 0;
                 txt_score.setText(String.valueOf(FoundsStore.SCORE));
             }
 
@@ -151,7 +151,7 @@ public class GamblingActivity extends AppCompatActivity implements IEventEnd {
             else if ((image11.getValue() == image12.getValue() && image12.getValue() == image13.getValue() &&
                     image13.getValue() == image14.getValue() && image14.getValue() == image15.getValue())) {
                 Toast.makeText(this, "You win big prize", Toast.LENGTH_SHORT).show();
-                FoundsStore.SCORE += 1020;
+                FoundsStore.SCORE += 0;
                 txt_score.setText(String.valueOf(FoundsStore.SCORE));
             }
 
@@ -159,7 +159,7 @@ public class GamblingActivity extends AppCompatActivity implements IEventEnd {
             else if ((image.getValue() == image7.getValue() && image7.getValue() == image13.getValue() &&
                     image13.getValue() == image9.getValue() && image9.getValue() == image5.getValue())) {
                 Toast.makeText(this, "You win small prize", Toast.LENGTH_SHORT).show();
-                FoundsStore.SCORE += 300;
+                FoundsStore.SCORE += 0;
                 txt_score.setText(String.valueOf(FoundsStore.SCORE));
             }
 
@@ -167,7 +167,7 @@ public class GamblingActivity extends AppCompatActivity implements IEventEnd {
             else if ((image3.getValue() == image7.getValue() && image7.getValue() == image9.getValue() &&
                     image9.getValue() == image11.getValue() && image11.getValue() == image13.getValue())) {
                 Toast.makeText(this, "You win small prize", Toast.LENGTH_SHORT).show();
-                FoundsStore.SCORE += 300;
+                FoundsStore.SCORE += 0;
                 txt_score.setText(String.valueOf(FoundsStore.SCORE));
             }
 
@@ -175,7 +175,7 @@ public class GamblingActivity extends AppCompatActivity implements IEventEnd {
             else if ((image.getValue() == image6.getValue() && image6.getValue() == image11.getValue() &&
                     image11.getValue() == image10.getValue() && image10.getValue() == image15.getValue())) {
                 Toast.makeText(this, "You win big prize", Toast.LENGTH_SHORT).show();
-                FoundsStore.SCORE += 1020;
+                FoundsStore.SCORE += 0;
                 txt_score.setText(String.valueOf(FoundsStore.SCORE));
             }
 
@@ -183,7 +183,7 @@ public class GamblingActivity extends AppCompatActivity implements IEventEnd {
             else if ((image2.getValue() == image7.getValue() && image7.getValue() == image12.getValue() &&
                     image12.getValue() == image9.getValue() && image9.getValue() == image4.getValue())) {
                 Toast.makeText(this, "You win big prize", Toast.LENGTH_SHORT).show();
-                FoundsStore.SCORE += 1020;
+                FoundsStore.SCORE += 0;
                 txt_score.setText(String.valueOf(FoundsStore.SCORE));
             }
 
@@ -191,7 +191,7 @@ public class GamblingActivity extends AppCompatActivity implements IEventEnd {
             else if ((image3.getValue() == image8.getValue() && image8.getValue() == image13.getValue() &&
                     image13.getValue() == image10.getValue() && image10.getValue() == image5.getValue())) {
                 Toast.makeText(this, "You win big prize", Toast.LENGTH_SHORT).show();
-                FoundsStore.SCORE += 1020;
+                FoundsStore.SCORE += 0;
                 txt_score.setText(String.valueOf(FoundsStore.SCORE));
             }
 
@@ -199,7 +199,7 @@ public class GamblingActivity extends AppCompatActivity implements IEventEnd {
             else if ((image.getValue() == image7.getValue() && image7.getValue() == image13.getValue() &&
                     image13.getValue() == image10.getValue() && image10.getValue() == image5.getValue())) {
                 Toast.makeText(this, "You win big prize", Toast.LENGTH_SHORT).show();
-                FoundsStore.SCORE += 1020;
+                FoundsStore.SCORE += 0;
                 txt_score.setText(String.valueOf(FoundsStore.SCORE));
             }
 
@@ -207,7 +207,7 @@ public class GamblingActivity extends AppCompatActivity implements IEventEnd {
             else if ((image3.getValue() == image7.getValue() && image7.getValue() == image13.getValue() &&
                     image13.getValue() == image10.getValue() && image10.getValue() == image5.getValue())) {
                 Toast.makeText(this, "You win big prize", Toast.LENGTH_SHORT).show();
-                FoundsStore.SCORE += 1020;
+                FoundsStore.SCORE += 0;
                 txt_score.setText(String.valueOf(FoundsStore.SCORE));
             }
 
