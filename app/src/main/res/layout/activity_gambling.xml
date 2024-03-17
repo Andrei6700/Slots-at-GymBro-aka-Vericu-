@@ -3,12 +3,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
+    android:background="@drawable/bgcopy"
     tools:context=".MainActivity">
+
+
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
 
     <LinearLayout
         android:layout_width="545dp"
         android:layout_height="72dp">
+
+        <Button
+            android:id="@+id/btnGoToMainMenu"
+            android:layout_width="61dp"
+            android:layout_height="wrap_content"
+            android:text="go to Main Menu" />
 
         <TextView
             android:id="@+id/txt_score"
@@ -20,17 +33,12 @@
             android:textColor="@android:color/white" />
 
         <Button
-            android:id="@+id/btnGoToMainMenu"
-            android:layout_width="177dp"
-            android:layout_height="wrap_content"
-            android:text="go to Main Menu" />
-
-        <Button
             android:id="@+id/bet"
             android:layout_width="177dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="50" />
+
     </LinearLayout>
 
     <FrameLayout
@@ -41,59 +49,55 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="49dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginBottom="18dp"
-        android:background="@drawable/frame">
+        android:layout_marginEnd="49dp"
+        android:layout_marginBottom="18dp">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            >
+            android:id="@+id/textView1"
+            android:layout_width="377dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center_horizontal">
+
             <com.example.pacanele.ImageScrolling.ImageScrolling
                 android:id="@+id/image"
                 android:layout_width="80dp"
                 android:layout_height="108dp"
-                android:layout_gravity="top" />
+                android:layout_gravity="center_horizontal|center" />
 
             <com.example.pacanele.ImageScrolling.ImageScrolling
                 android:id="@+id/image2"
                 android:layout_width="80dp"
-                android:layout_height="109dp"
-                android:layout_gravity="top" />
+                android:layout_height="108dp"
+                android:layout_gravity="center_horizontal|center" />
 
             <com.example.pacanele.ImageScrolling.ImageScrolling
                 android:id="@+id/image3"
                 android:layout_width="80dp"
-                android:layout_height="109dp"
-                android:layout_gravity="top" />
+                android:layout_height="108dp"
+                android:layout_gravity="center_horizontal|center" />
 
             <com.example.pacanele.ImageScrolling.ImageScrolling
                 android:id="@+id/image4"
                 android:layout_width="80dp"
-                android:layout_height="109dp"
-                android:layout_gravity="top" />
+                android:layout_height="108dp"
+                android:layout_gravity="center_horizontal|center" />
 
             <com.example.pacanele.ImageScrolling.ImageScrolling
                 android:id="@+id/image5"
                 android:layout_width="80dp"
-                android:layout_height="109dp"
-                android:layout_gravity="top" />
+                android:layout_height="108dp"
+                android:layout_gravity="center_horizontal|center" />
         </LinearLayout>
         <!--        randul 2-->
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="377dp"
+            android:layout_height="96dp"
+            android:layout_marginBottom="10dp"
             android:layout_gravity="center">
 
             <com.example.pacanele.ImageScrolling.ImageScrolling
                 android:id="@+id/image6"
-                android:layout_width="80dp"
-                android:layout_height="108dp"
-                android:layout_gravity="bottom|center"/>
-
-            <com.example.pacanele.ImageScrolling.ImageScrolling
-                android:id="@+id/image9"
                 android:layout_width="80dp"
                 android:layout_height="108dp"
                 android:layout_gravity="bottom|center" />
@@ -111,23 +115,29 @@
                 android:layout_gravity="bottom|center" />
 
             <com.example.pacanele.ImageScrolling.ImageScrolling
+                android:id="@+id/image9"
+                android:layout_width="80dp"
+                android:layout_height="108dp"
+                android:layout_gravity="bottom|center" />
+
+            <com.example.pacanele.ImageScrolling.ImageScrolling
                 android:id="@+id/image10"
                 android:layout_width="80dp"
                 android:layout_height="108dp"
                 android:layout_gravity="bottom|center" />
         </LinearLayout>
-
         <!--        randul 3-->
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:layout_width="377dp"
+            android:layout_height="84dp"
             android:layout_gravity="bottom|center">
 
             <com.example.pacanele.ImageScrolling.ImageScrolling
                 android:id="@+id/image11"
                 android:layout_width="80dp"
                 android:layout_height="108dp"
-                android:layout_gravity="bottom|center"/>
+                android:layout_gravity="bottom|center" />
 
             <com.example.pacanele.ImageScrolling.ImageScrolling
                 android:id="@+id/image12"
@@ -160,13 +170,29 @@
             android:layout_height="96dp"
             android:layout_alignParentBottom="true"
             android:layout_gravity="end"
-            android:layout_marginRight="2dp"
             android:layout_marginTop="200dp"
+            android:layout_marginRight="120dp"
             android:layout_toRightOf="@+id/frame_bar"
             android:src="@drawable/legaltren" />
+
     </FrameLayout>
 
+    <ImageView
+        android:id="@+id/image_bottom_right"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="-25dp"
+        android:src="@drawable/gigachadb" />
 
+    <ImageView
+        android:id="@+id/image_bottom_left"
+        android:layout_width="200dp"
+        android:layout_height="250dp"
+        android:layout_marginLeft="-45dp"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/gigachada"/>
 
 </RelativeLayout>
 
