@@ -96,7 +96,7 @@ public class GamblingActivity extends AppCompatActivity implements IEventEnd {
             @Override
             public void onClick(View v) {
                 betAmount = 100;
-                bet50.setChecked(false); // check 50
+                bet50.setChecked(false);
                 bet100.setChecked(true);
                 betAll.setChecked(false);
             }
@@ -116,12 +116,16 @@ public class GamblingActivity extends AppCompatActivity implements IEventEnd {
             }
         });
 
-
         btn_start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (FoundsStore.SCORE >= betAmount) {
+                if (betAmount <= FoundsStore.SCORE) {
                     btn_start.setVisibility(View.VISIBLE);
+
+                    int spinCost = betAmount;
+
+                    FoundsStore.SCORE -= spinCost;
+                    txt_score.setText(String.valueOf(FoundsStore.SCORE));
 
                     image.setValueRandom(new Random().nextInt(8),
                             new Random().nextInt((15 - 5) + 1) + 5);
@@ -169,61 +173,246 @@ public class GamblingActivity extends AppCompatActivity implements IEventEnd {
             btn_start.setVisibility(View.VISIBLE);
             count_done = 0;
 
-            if ((image.getValue() == image2.getValue() && image2.getValue() == image3.getValue() &&
-                    image3.getValue() == image4.getValue() && image4.getValue() == image5.getValue())) {
-                Toast.makeText(this, "You win big prize", Toast.LENGTH_SHORT).show();
-                FoundsStore.SCORE += 0;
-                txt_score.setText(String.valueOf(FoundsStore.SCORE));
-            } else if ((image6.getValue() == image7.getValue() && image7.getValue() == image8.getValue() &&
-                    image8.getValue() == image9.getValue() && image9.getValue() == image10.getValue())) {
-                Toast.makeText(this, "You win big prize", Toast.LENGTH_SHORT).show();
-                FoundsStore.SCORE += 0;
-                txt_score.setText(String.valueOf(FoundsStore.SCORE));
-            } else if ((image11.getValue() == image12.getValue() && image12.getValue() == image13.getValue() &&
-                    image13.getValue() == image14.getValue() && image14.getValue() == image15.getValue())) {
-                Toast.makeText(this, "You win big prize", Toast.LENGTH_SHORT).show();
-                FoundsStore.SCORE += 0;
-                txt_score.setText(String.valueOf(FoundsStore.SCORE));
-            } else if ((image.getValue() == image7.getValue() && image7.getValue() == image13.getValue() &&
-                    image13.getValue() == image9.getValue() && image9.getValue() == image5.getValue())) {
-                Toast.makeText(this, "You win small prize", Toast.LENGTH_SHORT).show();
-                FoundsStore.SCORE += 0;
-                txt_score.setText(String.valueOf(FoundsStore.SCORE));
-            } else if ((image3.getValue() == image7.getValue() && image7.getValue() == image9.getValue() &&
-                    image9.getValue() == image11.getValue() && image11.getValue() == image13.getValue())) {
-                Toast.makeText(this, "You win small prize", Toast.LENGTH_SHORT).show();
-                FoundsStore.SCORE += 0;
-                txt_score.setText(String.valueOf(FoundsStore.SCORE));
-            } else if ((image.getValue() == image6.getValue() && image6.getValue() == image11.getValue() &&
-                    image11.getValue() == image10.getValue() && image10.getValue() == image15.getValue())) {
-                Toast.makeText(this, "You win big prize", Toast.LENGTH_SHORT).show();
-                FoundsStore.SCORE += 0;
-                txt_score.setText(String.valueOf(FoundsStore.SCORE));
-            } else if ((image2.getValue() == image7.getValue() && image7.getValue() == image12.getValue() &&
-                    image12.getValue() == image9.getValue() && image9.getValue() == image4.getValue())) {
-                Toast.makeText(this, "You win big prize", Toast.LENGTH_SHORT).show();
-                FoundsStore.SCORE += 0;
-                txt_score.setText(String.valueOf(FoundsStore.SCORE));
-            } else if ((image3.getValue() == image8.getValue() && image8.getValue() == image13.getValue() &&
-                    image13.getValue() == image10.getValue() && image10.getValue() == image5.getValue())) {
-                Toast.makeText(this, "You win big prize", Toast.LENGTH_SHORT).show();
-                FoundsStore.SCORE += 0;
-                txt_score.setText(String.valueOf(FoundsStore.SCORE));
-            } else if ((image.getValue() == image7.getValue() && image7.getValue() == image13.getValue() &&
-                    image13.getValue() == image10.getValue() && image10.getValue() == image5.getValue())) {
-                Toast.makeText(this, "You win big prize", Toast.LENGTH_SHORT).show();
-                FoundsStore.SCORE += 0;
-                txt_score.setText(String.valueOf(FoundsStore.SCORE));
-            } else if ((image3.getValue() == image7.getValue() && image7.getValue() == image13.getValue() &&
-                    image13.getValue() == image10.getValue() && image10.getValue() == image5.getValue())) {
-                Toast.makeText(this, "You win big prize", Toast.LENGTH_SHORT).show();
-                FoundsStore.SCORE += 0;
-                txt_score.setText(String.valueOf(FoundsStore.SCORE));
-            } else {
-                Toast.makeText(this, "You win nothing", Toast.LENGTH_SHORT).show();
-                FoundsStore.SCORE -= betAmount;
+            // first line
+            if (image.getValue() == image2.getValue() && image2.getValue() == image3.getValue() &&
+                    image3.getValue() == image4.getValue() && image4.getValue() == image5.getValue()) {
+                Toast.makeText(this, "1", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
                 txt_score.setText(String.valueOf(FoundsStore.SCORE));
             }
+
+            // second line
+            else if (image6.getValue() == image7.getValue() && image7.getValue() == image8.getValue() &&
+                    image8.getValue() == image9.getValue() && image9.getValue() == image10.getValue()) {
+                Toast.makeText(this, "2", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+            }
+
+            // third line
+            else if (image11.getValue() == image12.getValue() && image12.getValue() == image13.getValue() &&
+                    image13.getValue() == image14.getValue() && image14.getValue() == image15.getValue()) {
+                Toast.makeText(this, "3", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+            }
+
+            //firs column
+            else if (image.getValue() == image6.getValue() && image6.getValue() == image11.getValue()) {
+                Toast.makeText(this, "4", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+            }
+
+            //second column
+            else if (image2.getValue() == image7.getValue() && image7.getValue() == image12.getValue()) {
+                Toast.makeText(this, "5", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+            }
+
+            // third column
+            else if (image3.getValue() == image8.getValue() && image8.getValue() == image13.getValue()) {
+                Toast.makeText(this, "6", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+            }
+
+            //4 column
+            else if (image4.getValue() == image9.getValue() && image9.getValue() == image14.getValue()) {
+                Toast.makeText(this, "7", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+            }
+
+            //5 column
+            else if (image5.getValue() == image10.getValue() && image10.getValue() == image15.getValue() ) {
+                Toast.makeText(this, "8", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+            }
+
+            // V
+            else if (image.getValue() == image7.getValue() && image7.getValue() == image13.getValue()
+                    && image13.getValue() == image9.getValue() && image9.getValue() == image5.getValue()) {
+                Toast.makeText(this, "9", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+            }
+
+            //^
+            else if (image11.getValue() == image7.getValue() && image7.getValue() == image3.getValue()
+                    && image3.getValue() == image9.getValue() && image9.getValue() == image15.getValue() ) {
+                Toast.makeText(this, "10 ", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+            }
+
+            //
+            else if ((image6.getValue() == image12.getValue() && image12.getValue() == image8.getValue()) && image8.getValue() == image4.getValue()
+                    && image4.getValue() == image10.getValue()) {
+                Toast.makeText(this, "11", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+            }
+
+            //
+            else if ((image6.getValue() == image12.getValue() && image12.getValue() == image8.getValue()) && image8.getValue() == image14.getValue()
+                    && image14.getValue() == image10.getValue()) {
+                Toast.makeText(this, "12", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+            }
+
+            //
+            else if ((image.getValue() == image7.getValue() && image7.getValue() == image3.getValue()) && image3.getValue() == image9.getValue()
+                    && image9.getValue() == image15.getValue()) {
+                Toast.makeText(this, "13", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+            }
+
+            //
+            else if ((image11.getValue() == image7.getValue() && image7.getValue() == image13.getValue()) && image13.getValue() == image9.getValue()
+                    && image9.getValue() == image15.getValue()) {
+                Toast.makeText(this, "14", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+            }
+
+            //
+            else if ((image11.getValue() == image7.getValue() && image7.getValue() == image3.getValue()) && image3.getValue() == image9.getValue()
+                    && image9.getValue() == image5.getValue()) {
+                Toast.makeText(this, "15", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+            }
+
+            //
+            else if ((image.getValue() == image7.getValue() && image7.getValue() == image13.getValue()) && image13.getValue() == image9.getValue()
+                    && image9.getValue() == image15.getValue()) {
+                Toast.makeText(this, "16", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+            }
+
+            //
+            else if ((image.getValue() == image2.getValue() && image2.getValue() == image8.getValue()) && image8.getValue() == image4.getValue()
+                    && image4.getValue() == image5.getValue()) {
+                Toast.makeText(this, "17", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+            }
+
+            //
+            else if ((image6.getValue() == image2.getValue() && image2.getValue() == image8.getValue()) && image8.getValue() == image4.getValue()
+                    && image4.getValue() == image10.getValue()) {
+                Toast.makeText(this, "18", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+            }
+
+            //
+            else if ((image6.getValue() == image7.getValue() && image7.getValue() == image13.getValue()) && image13.getValue() == image9.getValue()
+                    && image9.getValue() == image10.getValue()) {
+                Toast.makeText(this, "19", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+            }
+
+            //
+            else if ((image.getValue() == image7.getValue() && image7.getValue() == image2.getValue()) && image2.getValue() == image9.getValue()
+                    && image9.getValue() == image5.getValue()) {
+                Toast.makeText(this, "20", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+            }
+
+            //
+            else if ((image.getValue() == image2.getValue() && image2.getValue() == image4.getValue()) && image4.getValue() == image5.getValue()
+                    && image5.getValue() == image13.getValue()) {
+                Toast.makeText(this, "21", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+            }
+
+            //
+            else if ((image.getValue() == image2.getValue() && image2.getValue() == image8.getValue()) && image8.getValue() == image4.getValue()
+                    && image4.getValue() == image5.getValue()) {
+                Toast.makeText(this, "22", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+            }
+
+            //
+            else if ((image6.getValue() == image7.getValue() && image7.getValue() == image3.getValue()) && image3.getValue() == image9.getValue()
+                    && image9.getValue() == image10.getValue()) {
+                Toast.makeText(this, "23", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+            }
+
+            //
+            else if ((image11.getValue() == image12.getValue() && image12.getValue() == image8.getValue()) && image8.getValue() == image14.getValue()
+                    && image14.getValue() == image15.getValue()) {
+                Toast.makeText(this, "24", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+            }
+
+            //
+            else if ((image.getValue() == image2.getValue() && image2.getValue() == image3.getValue()) && image3.getValue() == image9.getValue()
+                    && image9.getValue() == image15.getValue()) {
+                Toast.makeText(this, "25", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+            }
+
+            //
+            else if ((image6.getValue() == image7.getValue() && image7.getValue() == image8.getValue()) && image8.getValue() == image14.getValue()
+                    && image14.getValue() == image15.getValue()) {
+                Toast.makeText(this, "26", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+            }
+
+            //
+            else if ((image11.getValue() == image12.getValue() && image12.getValue() == image13.getValue()) && image13.getValue() == image9.getValue()
+                    && image9.getValue() == image5.getValue()) {
+                Toast.makeText(this, "27", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+            }
+
+            //
+            else if ((image11.getValue() == image12.getValue() && image12.getValue() == image3.getValue()) && image3.getValue() == image14.getValue()
+                    && image14.getValue() == image15.getValue()) {
+                Toast.makeText(this, "28", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+            }
+
+            //
+            else if ((image11.getValue() == image7.getValue() && image7.getValue() == image8.getValue()) && image8.getValue() == image9.getValue()
+                    && image9.getValue() == image5.getValue()) {
+                Toast.makeText(this, "29", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+            }
+
+            else if (image.getValue() == image2.getValue()){
+                Toast.makeText(this, "test", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+            }
+
+            //
+            else {
+                Toast.makeText(this, "You lose :(", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 0;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+            }
+            this.eventEnd(result, count);
         }
     }
 

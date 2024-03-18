@@ -59,7 +59,7 @@ public class ImageScrolling extends FrameLayout {
 
                     @Override
                     public void onAnimationEnd(Animator animator) {
-                        // Set image for current_image based on old_value modulo 6
+                        // Set image for current_image based on old_value modulo 8
                         setImage(current_image, old_value % 8);
 
                         // Reset translations of both current_image and next_image
@@ -75,7 +75,7 @@ public class ImageScrolling extends FrameLayout {
                             last_result = 0;
                             old_value = 0;
                             setImage(next_image, image);
-                            eventEnd.eventEnd(image % 8, rotate_count);
+                        eventEnd.eventEnd(image % 6, rotate_count);
                         }
                     }
 
