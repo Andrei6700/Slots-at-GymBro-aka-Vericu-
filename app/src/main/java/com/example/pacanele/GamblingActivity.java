@@ -35,7 +35,14 @@ public class GamblingActivity extends AppCompatActivity implements IEventEnd {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gambling);
 
+        MediaPlayer backgroundPlayer = MediaPlayer.create(this, R.raw.gymbackground);
+        backgroundPlayer.setVolume(0.5f, 0.5f); // Setează volumul pentru sunetul de fundal
+        backgroundPlayer.setLooping(true); // Setează sunetul de fundal să se repete
+        backgroundPlayer.start(); // Începe redarea sunetului de fundal
+
         mediaPlayer = MediaPlayer.create(this, R.raw.rollsound);
+        mediaPlayer.setVolume(1.0f, 1.0f);
+
 
         btnGoToMainMenu = findViewById(R.id.btnGoToMainMenu);
         btnGoToMainMenu.setOnClickListener(new View.OnClickListener() {
@@ -126,10 +133,10 @@ public class GamblingActivity extends AppCompatActivity implements IEventEnd {
         btn_start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (mediaPlayer != null && !mediaPlayer.isPlaying()) {
-                    mediaPlayer.start();
-                }
                 if (betAmount <= FoundsStore.SCORE) {
+                    if (mediaPlayer != null && !mediaPlayer.isPlaying()) {
+                        mediaPlayer.start();
+                    }
                     btn_start.setVisibility(View.VISIBLE);
 
                     int spinCost = betAmount;
@@ -172,15 +179,15 @@ public class GamblingActivity extends AppCompatActivity implements IEventEnd {
             btn_start.setVisibility(View.VISIBLE);
             count_done = 0;
 
-            if (randomChance < 5) {
-                if (image.getValue() == image2.getValue() && image2.getValue() == image3.getValue() &&
+            //if () {  fac cum e aici si pun in oridine gen 5 5 5 6 6 6 7 7 .... etc
+                if (randomChance < 5 && image.getValue() == image2.getValue() && image2.getValue() == image3.getValue() &&
                         image3.getValue() == image4.getValue() && image4.getValue() == image5.getValue()) {
                     Toast.makeText(this, "1", Toast.LENGTH_SHORT).show();
                     FoundsStore.SCORE += 50;
                     txt_score.setText(String.valueOf(FoundsStore.SCORE));
                     win = true;
                 }
-            } else if (randomChance < 25) {
+             if (randomChance < 25) {
                 if (image6.getValue() == image7.getValue() && image7.getValue() == image8.getValue() &&
                         image8.getValue() == image9.getValue() && image9.getValue() == image10.getValue()) {
                     Toast.makeText(this, "2", Toast.LENGTH_SHORT).show();
