@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
+
 import com.example.pacanele.R;
 
 public class ImageScrolling extends FrameLayout {
@@ -33,8 +35,8 @@ public class ImageScrolling extends FrameLayout {
 
     private void init(Context context) {
         LayoutInflater.from(context).inflate(R.layout.image_scrolling_display, this);
-        current_image = (ImageView) getRootView().findViewById(R.id.current_image);
-        next_image = (ImageView) getRootView().findViewById(R.id.next_image);
+        current_image = /*(ImageView)*/ getRootView().findViewById(R.id.current_image);
+        next_image =/* (ImageView)*/ getRootView().findViewById(R.id.next_image);
 
         next_image.setTranslationY(getHeight());
 
@@ -43,6 +45,11 @@ public class ImageScrolling extends FrameLayout {
     }
 
     public void setValueRandom(final int image, int rotate_count) {
+        // Check if MediaPlayer is initialized and playing
+//        if (mediaPlayer != null && !mediaPlayer.isPlaying()) {
+//            mediaPlayer.start();
+//        }
+
         current_image.setVisibility(VISIBLE);
         current_image.setTranslationY(0);
         next_image.setTranslationY(next_image.getHeight());
@@ -55,10 +62,10 @@ public class ImageScrolling extends FrameLayout {
                 .setDuration(ANIMATION_DUR)
                 .setListener(new Animator.AnimatorListener() {
                     @Override
-                    public void onAnimationStart(Animator animator) {}
+                    public void onAnimationStart(@NonNull Animator animator) {}
 
                     @Override
-                    public void onAnimationEnd(Animator animator) {
+                    public void onAnimationEnd(@NonNull Animator animator) {
                         // Set image for current_image based on old_value modulo 8
                         setImage(current_image, old_value % 8);
 
@@ -75,19 +82,16 @@ public class ImageScrolling extends FrameLayout {
                             last_result = 0;
                             old_value = 0;
                             setImage(next_image, image);
-                        eventEnd.eventEnd(image % 6, rotate_count);
+                            eventEnd.eventEnd(image % 6, rotate_count);
                         }
                     }
 
                     @Override
-                    public void onAnimationCancel(Animator animator) {}
+                    public void onAnimationCancel(@NonNull Animator animator) {}
 
                     @Override
-                    public void onAnimationRepeat(Animator animator) {}
+                    public void onAnimationRepeat(@NonNull Animator animator) {}
                 });
-
-        // Play roll sound
-        mediaPlayer.start();
     }
 
     private void setImage(ImageView image_view, int value) {
@@ -105,7 +109,7 @@ public class ImageScrolling extends FrameLayout {
             image_view.setImageResource(R.drawable.trenbolone);
         else if (value == SlotMachineSymbols.whey)
             image_view.setImageResource(R.drawable.whey);
-        else
+        else if (value == SlotMachineSymbols.powder)
             image_view.setImageResource(R.drawable.powder);
 
         // Set tag for image for use to compare result
