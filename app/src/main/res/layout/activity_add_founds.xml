@@ -15,14 +15,14 @@
 
     <Button
         android:id="@+id/btnGoToMainMenu"
-        android:layout_width="67dp"
-        android:layout_height="62dp"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/textView2"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
         android:layout_marginTop="-18dp"
-        android:layout_marginEnd="597dp"
-        android:text="go to Main Menu" />
+        android:layout_marginEnd="564dp"
+        android:text="back" />
 
     <RelativeLayout
         android:id="@+id/relativeLayout"

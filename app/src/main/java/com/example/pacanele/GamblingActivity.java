@@ -1,20 +1,23 @@
 package com.example.pacanele;
 
-import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.media.MediaPlayer;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.media.MediaPlayer;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 
 import com.example.pacanele.ImageScrolling.IEventEnd;
 import com.example.pacanele.ImageScrolling.ImageScrolling;
+import com.example.pacanele.ImageScrolling.PayLinesCombinations;
+
 
 import java.util.Random;
 
@@ -35,14 +38,13 @@ public class GamblingActivity extends AppCompatActivity implements IEventEnd {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gambling);
 
-        MediaPlayer backgroundPlayer = MediaPlayer.create(this, R.raw.gymbackground);
-        backgroundPlayer.setVolume(0.5f, 0.5f); // Setează volumul pentru sunetul de fundal
-        backgroundPlayer.setLooping(true); // Setează sunetul de fundal să se repete
-        backgroundPlayer.start(); // Începe redarea sunetului de fundal
+        MediaPlayer backgroundPlayer = MediaPlayer.create(this, R.raw.gymbackground); // background sound
+        backgroundPlayer.setVolume(0.5f, 0.5f); //set the volume to 50%
+        backgroundPlayer.setLooping(true); // the sound will be played in loop
+        backgroundPlayer.start();
 
-        mediaPlayer = MediaPlayer.create(this, R.raw.rollsound);
-        mediaPlayer.setVolume(1.0f, 1.0f);
-
+        mediaPlayer = MediaPlayer.create(this, R.raw.rollsound); // sound from spinning
+        mediaPlayer.setVolume(1.0f, 1.0f); // set the volume to 100%
 
         btnGoToMainMenu = findViewById(R.id.btnGoToMainMenu);
         btnGoToMainMenu.setOnClickListener(new View.OnClickListener() {
@@ -171,258 +173,197 @@ public class GamblingActivity extends AppCompatActivity implements IEventEnd {
     }
 
     public void eventEnd(int result, int count) {
-        Log.d("GamblingActivity", "eventEnd called with result: " + result + ", count: " + count);
         if (count_done < 2)
             count_done++;
         else {
             int randomChance = random.nextInt(100);
-            btn_start.setVisibility(View.VISIBLE);
             count_done = 0;
 
+            win = false;
+
             //if () {  fac cum e aici si pun in oridine gen 5 5 5 6 6 6 7 7 .... etc
-                if (randomChance < 5 && image.getValue() == image2.getValue() && image2.getValue() == image3.getValue() &&
-                        image3.getValue() == image4.getValue() && image4.getValue() == image5.getValue()) {
-                    Toast.makeText(this, "1", Toast.LENGTH_SHORT).show();
-                    FoundsStore.SCORE += 50;
-                    txt_score.setText(String.valueOf(FoundsStore.SCORE));
-                    win = true;
-                }
-             if (randomChance < 25) {
-                if (image6.getValue() == image7.getValue() && image7.getValue() == image8.getValue() &&
-                        image8.getValue() == image9.getValue() && image9.getValue() == image10.getValue()) {
-                    Toast.makeText(this, "2", Toast.LENGTH_SHORT).show();
-                    FoundsStore.SCORE += 50;
-                    txt_score.setText(String.valueOf(FoundsStore.SCORE));
-                    win = true;
-                }
-            } else if (randomChance < 15) {
-                if (image11.getValue() == image12.getValue() && image12.getValue() == image13.getValue() &&
-                        image13.getValue() == image14.getValue() && image14.getValue() == image15.getValue()) {
-                    Toast.makeText(this, "3", Toast.LENGTH_SHORT).show();
-                    FoundsStore.SCORE += 50;
-                    txt_score.setText(String.valueOf(FoundsStore.SCORE));
-                    win = true;
-                }
-            } else if (randomChance < 80) {
-                if (image.getValue() == image6.getValue() && image.getValue() == image11.getValue()) {
-                    Toast.makeText(this, "4", Toast.LENGTH_SHORT).show();
-                    FoundsStore.SCORE += 50;
-                    txt_score.setText(String.valueOf(FoundsStore.SCORE));
-                    win = true;
-                }
-            } else if (randomChance < 90) {
-                if (image2.getValue() == image7.getValue() && image7.getValue() == image12.getValue()) {
-                    Toast.makeText(this, "5", Toast.LENGTH_SHORT).show();
-                    FoundsStore.SCORE += 50;
-                    txt_score.setText(String.valueOf(FoundsStore.SCORE));
-                    win = true;
-                }
-            } else if (randomChance < 100) {
-                if (image3.getValue() == image8.getValue() && image8.getValue() == image13.getValue()) {
-                    Toast.makeText(this, "6", Toast.LENGTH_SHORT).show();
-                    FoundsStore.SCORE += 50;
-                    txt_score.setText(String.valueOf(FoundsStore.SCORE));
-                    win = true;
-                }
-            } else if (randomChance < 10) {
-                if (image4.getValue() == image9.getValue() && image9.getValue() == image14.getValue()) {
-                    Toast.makeText(this, "7", Toast.LENGTH_SHORT).show();
-                    FoundsStore.SCORE += 50;
-                    txt_score.setText(String.valueOf(FoundsStore.SCORE));
-                    win = true;
-                }
-            } else if (randomChance < 15) {
-                if (image5.getValue() == image10.getValue() && image10.getValue() == image15.getValue()) {
-                    Toast.makeText(this, "8", Toast.LENGTH_SHORT).show();
-                    FoundsStore.SCORE += 50;
-                    txt_score.setText(String.valueOf(FoundsStore.SCORE));
-                    win = true;
-                }
-            } else if (randomChance < 20) {
-                if (image.getValue() == image7.getValue() && image7.getValue() == image13.getValue() &&
-                        image13.getValue() == image9.getValue() && image9.getValue() == image5.getValue() &&
-                        image.getValue() == image5.getValue()) {
-                    Toast.makeText(this, "9", Toast.LENGTH_SHORT).show();
-                    FoundsStore.SCORE += 50;
-                    txt_score.setText(String.valueOf(FoundsStore.SCORE));
-                    win = true;
-                }
-            } else if (randomChance < 25) {
-                if (image11.getValue() == image7.getValue() && image7.getValue() == image3.getValue() &&
-                        image3.getValue() == image9.getValue() && image9.getValue() == image15.getValue()) {
-                    Toast.makeText(this, "10", Toast.LENGTH_SHORT).show();
-                    FoundsStore.SCORE += 50;
-                    txt_score.setText(String.valueOf(FoundsStore.SCORE));
-                    win = true;
-                }
-            } else if (randomChance < 70) {
-                if ((image6.getValue() == image12.getValue() && image12.getValue() == image8.getValue()) &&
-                        image8.getValue() == image4.getValue() && image4.getValue() == image10.getValue()) {
-                    Toast.makeText(this, "11", Toast.LENGTH_SHORT).show();
-                    FoundsStore.SCORE += 50;
-                    txt_score.setText(String.valueOf(FoundsStore.SCORE));
-                    win = true;
-                }
-            } else if (randomChance < 80) {
-                if ((image6.getValue() == image12.getValue() && image12.getValue() == image8.getValue()) && image8.getValue() == image14.getValue()
-                        && image14.getValue() == image10.getValue()) {
-                    Toast.makeText(this, "12", Toast.LENGTH_SHORT).show();
-                    FoundsStore.SCORE += 50;
-                    txt_score.setText(String.valueOf(FoundsStore.SCORE));
-                    win = true;
-                }
-            } else if (randomChance < 90) {
-                if ((image.getValue() == image7.getValue() && image7.getValue() == image3.getValue()) && image3.getValue() == image9.getValue()
-                        && image9.getValue() == image15.getValue()) {
-                    Toast.makeText(this, "13", Toast.LENGTH_SHORT).show();
-                    FoundsStore.SCORE += 50;
-                    txt_score.setText(String.valueOf(FoundsStore.SCORE));
-                    win = true;
-                }
-            } else if (randomChance < 80) {
-                if ((image11.getValue() == image7.getValue() && image7.getValue() == image13.getValue()) && image13.getValue() == image9.getValue()
-                        && image9.getValue() == image15.getValue()) {
-                    Toast.makeText(this, "14", Toast.LENGTH_SHORT).show();
-                    FoundsStore.SCORE += 50;
-                    txt_score.setText(String.valueOf(FoundsStore.SCORE));
-                    win = true;
-                }
-            } else if (randomChance < 90) {
-                if ((image11.getValue() == image7.getValue() && image7.getValue() == image3.getValue()) && image3.getValue() == image9.getValue()
-                        && image9.getValue() == image5.getValue()) {
-                    Toast.makeText(this, "15", Toast.LENGTH_SHORT).show();
-                    FoundsStore.SCORE += 50;
-                    txt_score.setText(String.valueOf(FoundsStore.SCORE));
-                    win = true;
-                }
-            } else if (randomChance < 80) {
-                if ((image.getValue() == image7.getValue() && image7.getValue() == image13.getValue()) && image13.getValue() == image9.getValue()
-                        && image9.getValue() == image15.getValue()) {
-                    Toast.makeText(this, "16", Toast.LENGTH_SHORT).show();
-                    FoundsStore.SCORE += 50;
-                    txt_score.setText(String.valueOf(FoundsStore.SCORE));
-                    win = true;
-                }
-            } else if (randomChance < 90) {
-                if ((image.getValue() == image2.getValue() && image2.getValue() == image8.getValue()) && image8.getValue() == image4.getValue()
-                        && image4.getValue() == image5.getValue()) {
-                    Toast.makeText(this, "17", Toast.LENGTH_SHORT).show();
-                    FoundsStore.SCORE += 50;
-                    txt_score.setText(String.valueOf(FoundsStore.SCORE));
-                    win = true;
-                }
-            } else if (randomChance < 80) {
-                if ((image6.getValue() == image2.getValue() && image2.getValue() == image8.getValue()) && image8.getValue() == image4.getValue()
-                        && image4.getValue() == image10.getValue()) {
-                    Toast.makeText(this, "18", Toast.LENGTH_SHORT).show();
-                    FoundsStore.SCORE += 50;
-                    txt_score.setText(String.valueOf(FoundsStore.SCORE));
-                    win = true;
-                }
-            } else if (randomChance < 80) {
-                if ((image6.getValue() == image7.getValue() && image7.getValue() == image13.getValue()) && image13.getValue() == image9.getValue()
-                        && image9.getValue() == image10.getValue()) {
-                    Toast.makeText(this, "19", Toast.LENGTH_SHORT).show();
-                    FoundsStore.SCORE += 50;
-                    txt_score.setText(String.valueOf(FoundsStore.SCORE));
-                    win = true;
-                }
-            } else if (randomChance < 90) {
-                if ((image.getValue() == image7.getValue() && image7.getValue() == image2.getValue()) && image2.getValue() == image9.getValue()
-                        && image9.getValue() == image5.getValue()) {
-                    Toast.makeText(this, "20", Toast.LENGTH_SHORT).show();
-                    FoundsStore.SCORE += 50;
-                    txt_score.setText(String.valueOf(FoundsStore.SCORE));
-                    win = true;
-                }
-            } else if (randomChance < 80) {
-                if ((image.getValue() == image2.getValue() && image2.getValue() == image4.getValue()) && image4.getValue() == image5.getValue()
-                        && image5.getValue() == image13.getValue()) {
-                    Toast.makeText(this, "21", Toast.LENGTH_SHORT).show();
-                    FoundsStore.SCORE += 50;
-                    txt_score.setText(String.valueOf(FoundsStore.SCORE));
-                    win = true;
-                }
-            } else if (randomChance < 90) {
-                if ((image.getValue() == image2.getValue() && image2.getValue() == image8.getValue()) && image8.getValue() == image4.getValue()
-                        && image4.getValue() == image5.getValue()) {
-                    Toast.makeText(this, "22", Toast.LENGTH_SHORT).show();
-                    FoundsStore.SCORE += 50;
-                    txt_score.setText(String.valueOf(FoundsStore.SCORE));
-                    win = true;
-                }
-            } else if (randomChance < 80) {
-                if ((image6.getValue() == image7.getValue() && image7.getValue() == image3.getValue()) && image3.getValue() == image9.getValue()
-                        && image9.getValue() == image10.getValue()) {
-                    Toast.makeText(this, "23", Toast.LENGTH_SHORT).show();
-                    FoundsStore.SCORE += 50;
-                    txt_score.setText(String.valueOf(FoundsStore.SCORE));
-                    win = true;
-                }
-            } else if (randomChance < 90) {
-                if ((image11.getValue() == image12.getValue() && image12.getValue() == image8.getValue()) && image8.getValue() == image14.getValue()
-                        && image14.getValue() == image15.getValue()) {
-                    Toast.makeText(this, "24", Toast.LENGTH_SHORT).show();
-                    FoundsStore.SCORE += 50;
-                    txt_score.setText(String.valueOf(FoundsStore.SCORE));
-                    win = true;
-                }
-            } else if (randomChance < 80) {
-                if ((image.getValue() == image2.getValue() && image2.getValue() == image3.getValue()) && image3.getValue() == image9.getValue()
-                        && image9.getValue() == image15.getValue()) {
-                    Toast.makeText(this, "25", Toast.LENGTH_SHORT).show();
-                    FoundsStore.SCORE += 50;
-                    txt_score.setText(String.valueOf(FoundsStore.SCORE));
-                    win = true;
-                }
-            } else if (randomChance < 90) {
-                if ((image6.getValue() == image7.getValue() && image7.getValue() == image8.getValue()) && image8.getValue() == image14.getValue()
-                        && image14.getValue() == image15.getValue()) {
-                    Toast.makeText(this, "26", Toast.LENGTH_SHORT).show();
-                    FoundsStore.SCORE += 50;
-                    txt_score.setText(String.valueOf(FoundsStore.SCORE));
-                    win = true;
-                }
-            } else if (randomChance < 80) {
-                if ((image11.getValue() == image12.getValue() && image12.getValue() == image13.getValue()) && image13.getValue() == image9.getValue()
-                        && image9.getValue() == image5.getValue()) {
-                    Toast.makeText(this, "27", Toast.LENGTH_SHORT).show();
-                    FoundsStore.SCORE += 50;
-                    txt_score.setText(String.valueOf(FoundsStore.SCORE));
-                    win = true;
-                }
-            } else if (randomChance < 80) {
-                if ((image11.getValue() == image12.getValue() && image12.getValue() == image3.getValue()) && image3.getValue() == image14.getValue()
-                        && image14.getValue() == image15.getValue()) {
-                    Toast.makeText(this, "28", Toast.LENGTH_SHORT).show();
-                    FoundsStore.SCORE += 50;
-                    txt_score.setText(String.valueOf(FoundsStore.SCORE));
-                    win = true;
-                }
-            } else if (randomChance < 99) {
-                if ((image11.getValue() == image7.getValue() && image7.getValue() == image8.getValue()) && image8.getValue() == image9.getValue()
-                        && image9.getValue() == image5.getValue()) {
-                    Toast.makeText(this, "29", Toast.LENGTH_SHORT).show();
-                    FoundsStore.SCORE += 50;
-                    txt_score.setText(String.valueOf(FoundsStore.SCORE));
-                    win = true;
-                }
-        } else if (randomChance < 49) {
-            if (image.getValue() == image5.getValue() && image5.getValue() == image12.getValue()) {
-                Toast.makeText(this, "You won on the first column!", Toast.LENGTH_SHORT).show();
+            if (randomChance < 1 && PayLinesCombinations.PayLines1(image, image2, image3, image4, image5)) {
+                Toast.makeText(this, "1", Toast.LENGTH_SHORT).show();
                 FoundsStore.SCORE += 50;
                 txt_score.setText(String.valueOf(FoundsStore.SCORE));
                 win = true;
             }
-        }
-            else {
-                Toast.makeText(this, "You lose", Toast.LENGTH_SHORT).show();
+
+            if (randomChance < 5 && PayLinesCombinations.PayLines2(image6, image7, image8, image9, image10)) {
+                Toast.makeText(this, "2", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+                win = true;
+            }
+            if (randomChance < 6 && PayLinesCombinations.PayLines3(image11, image12, image13, image14, image15)) {
+                Toast.makeText(this, "3", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+                win = true;
+            }
+            if (randomChance < 7 && PayLinesCombinations.PayLines4(image, image6, image11)) {
+                Toast.makeText(this, "4", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+                win = true;
+            }
+            if (randomChance < 8 && PayLinesCombinations.PayLines5(image2, image7, image12)) {
+                Toast.makeText(this, "5", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+                win = true;
+            }
+            if (randomChance < 9 && PayLinesCombinations.PayLines6(image3, image8, image13)) {
+                Toast.makeText(this, "6", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+                win = true;
+            }
+            if (randomChance < 10 && PayLinesCombinations.PayLines7(image4, image9, image14)) {
+                Toast.makeText(this, "7", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+                win = true;
+            }
+            if (randomChance < 11 && PayLinesCombinations.PayLines8(image5, image10, image15)) {
+                Toast.makeText(this, "8", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+                win = true;
+            }
+            if (randomChance < 12 && PayLinesCombinations.PayLines9(image, image7, image13, image9, image5)) {
+                Toast.makeText(this, "9", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+                win = true;
+            }
+            if (randomChance < 13 && PayLinesCombinations.PayLines10(image11, image7, image3, image9, image15)) {
+                Toast.makeText(this, "10", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+                win = true;
+            }
+            if (randomChance < 14 && PayLinesCombinations.PayLines11(image6, image12, image8, image14, image10)) {
+                Toast.makeText(this, "11", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+                win = true;
+            }
+            if (randomChance < 15 && PayLinesCombinations.PayLines12(image6, image7, image13, image9, image10)) {
+                Toast.makeText(this, "12", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+                win = true;
+            }
+            if (randomChance < 16 && PayLinesCombinations.PayLines13(image11, image7, image13, image9, image5)) {
+                Toast.makeText(this, "13", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+                win = true;
+            }
+            if (randomChance < 17 && PayLinesCombinations.PayLines14(image11, image7, image3, image9, image5)) {
+                Toast.makeText(this, "14", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+                win = true;
+            }
+            if (randomChance < 18 && PayLinesCombinations.PayLines15(image11, image7, image13, image9, image5)) {
+                Toast.makeText(this, "15", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+                win = true;
+            }
+            if (randomChance < 19 && PayLinesCombinations.PayLines16(image, image7, image13, image9, image15)) {
+                Toast.makeText(this, "16", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+                win = true;
+            }
+            if (randomChance < 20 && PayLinesCombinations.PayLines17(image, image2, image8, image4, image5)) {
+                Toast.makeText(this, "17", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+                win = true;
+            }
+            if (randomChance < 21 && PayLinesCombinations.PayLines18(image6, image2, image8, image4, image10)) {
+                Toast.makeText(this, "18", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+                win = true;
+            }
+            if (randomChance < 22 && PayLinesCombinations.PayLines19(image6, image7, image2, image9, image10)) {
+                Toast.makeText(this, "19", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+                win = true;
+            }
+            if (randomChance < 23 && PayLinesCombinations.PayLines20(image, image2, image4, image5, image13)) {
+                Toast.makeText(this, "20", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+                win = true;
+            }
+            if (randomChance < 24 && PayLinesCombinations.PayLines21(image, image2, image4, image5, image13)) {
+                Toast.makeText(this, "21", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+                win = true;
+            }
+            if (randomChance < 25 && PayLinesCombinations.PayLines22(image, image2, image8, image4, image5)) {
+                Toast.makeText(this, "22", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+                win = true;
+            }
+            if (randomChance < 26 && PayLinesCombinations.PayLines23(image6, image7, image3, image9, image10)) {
+                Toast.makeText(this, "23", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+                win = true;
+            }
+            if (randomChance < 27 && PayLinesCombinations.PayLines24(image11, image12, image8, image14, image15)) {
+                Toast.makeText(this, "24", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+                win = true;
+            }
+            if (randomChance < 28 && PayLinesCombinations.PayLines25(image, image2, image3, image9, image15)) {
+                Toast.makeText(this, "25", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+                win = true;
+            }
+            if (randomChance < 29 && PayLinesCombinations.PayLines26(image6, image7, image8, image14, image15)) {
+                Toast.makeText(this, "26", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+                win = true;
+            }
+            if (randomChance < 30 && PayLinesCombinations.PayLines27(image11, image12, image13, image9, image5)) {
+                Toast.makeText(this, "27", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+                win = true;
+            }
+            if (randomChance < 31 && PayLinesCombinations.PayLines28(image11, image12, image3, image14, image15)) {
+                Toast.makeText(this, "28", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+                win = true;
+            }
+            if (randomChance < 32 && PayLinesCombinations.PayLines29(image11, image7, image8, image9, image5)) {
+                Toast.makeText(this, "29", Toast.LENGTH_SHORT).show();
+                FoundsStore.SCORE += 50;
+                txt_score.setText(String.valueOf(FoundsStore.SCORE));
+                win = true;
+            }
+            if (!win) {
+                Toast.makeText(this, "You lost", Toast.LENGTH_SHORT).show();
             }
         }
     }
-
-        public void openActivity1 () {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-        }
+    public void openActivity1 () {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
+}

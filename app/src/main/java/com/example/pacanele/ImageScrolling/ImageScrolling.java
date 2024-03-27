@@ -82,7 +82,7 @@ public class ImageScrolling extends FrameLayout {
                             last_result = 0;
                             old_value = 0;
                             setImage(next_image, image);
-                            eventEnd.eventEnd(image % 6, rotate_count);
+                            eventEnd.eventEnd(image % 8, rotate_count);
                         }
                     }
 
