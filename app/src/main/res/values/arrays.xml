@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="message" >
+        <item>Participarea la jocurile de noroc poate crea dependență și duce la probleme financiare sau sociale grave. Jucați responsabil și stabiliți limite pentru timpul și banii pe care îi alocați jocurilor de noroc. Înțelegeți că rezultatele jocurilor de noroc sunt determinate în mod aleatoriu și că nu există garanții de câștig. Este recomandat să vă consultați cu un specialist în probleme de jocuri de noroc sau să accesați resursele disponibile pentru asistență și consiliere în cazul în care aveți preocupări legate de comportamentul dvs. de joc. Persoanele sub 18 ani nu au voie să participe la jocuri de noroc.</item>
+        <item>Planificarea financiară este crucială în activitățile de gambling. Stabiliți un buget strict și respectați-l. Evitați să cheltuiți mai mult decât vă permiteți să pierdeți și nu împrumutați bani pentru a juca.</item>
+        <item>Fii conștient de semnele de dependență de jocuri de noroc, cum ar fi nevoia compulsivă de a juca, cheltuielile excesive de timp și bani pe jocuri de noroc și neglijarea responsabilităților personale sau profesionale. Dacă observați astfel de semne la dumneavoastră sau la cei dragi, căutați ajutor imediat.</item>
+        <item>Butoanele basic a unui joc tip pacanea, unde utilizatorul trebuie sa introduca o suma pentru a putea juca si a castiga.
+        Suma este dublata dupa factorul bet, care default este 50, dar poate sa aleaga 100 sau All. Daca utilizatorul alege 50 fiecare spin costa 50, daca selecteaza 100
+        fiecare spin costa 100, iar all, toata suma stransa</item>
+        <item>1. Fieldul pentru suma dorita sa va fie extrasa in mod legal din contul bancar;\n2. Fieldul pentru detinatorul Cardului\n3. Fieldul pentru numarul cardului\n4. Fieldul pentru CVV\n5. Fieldul pentru data de expirare\n6. butonul de platire</item>
+        <item>Dupa completarea tuturor fieldurilor, in prelabil utilizatorul apasa pe butonul de Add Founds si dupa ce apare mesajul "Funds added successfully" inseamna ca plata a fost cu succes</item>
+    </string-array>
+
+    <string-array name="title" >
+        <item>Avertisment</item>
+        <item>Managementul bugetului:</item>
+        <item>Recunoașterea semnelor de dependență:</item>
+        <item>Butoane joc</item>
+        <item>Introducerea datelor cu caracter personal</item>
+        <item>Confirmarea achizitiei</item>
+    </string-array>
+</resources>
