@@ -55,7 +55,7 @@
             android:layout_gravity="center_horizontal">
 
             <com.example.pacanele.ImageScrolling.ImageScrolling
-                android:id="@+id/image"
+                android:id="@+id/image1"
                 android:layout_width="80dp"
                 android:layout_height="108dp"
                 android:layout_gravity="center_horizontal|center" />
