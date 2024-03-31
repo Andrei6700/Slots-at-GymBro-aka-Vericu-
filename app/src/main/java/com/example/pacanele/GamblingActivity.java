@@ -42,7 +42,7 @@ public class GamblingActivity extends AppCompatActivity implements IEventEnd {
         setContentView(R.layout.activity_gambling);
 
         backgroundPlayer = MediaPlayer.create(this, R.raw.gymbackground); // background sound
-        backgroundPlayer.setVolume(0.1f, 0.1f); //set the volume to 50%
+        backgroundPlayer.setVolume(0.02f, 0.02f); //set the volume to 50%
         backgroundPlayer.setLooping(true); // the sound will be played in loop
         backgroundPlayer.start();
 

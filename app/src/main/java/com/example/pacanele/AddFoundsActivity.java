@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.content.Intent;
 import android.widget.Toast;
+import android.media.MediaPlayer;
 
 public class AddFoundsActivity extends AppCompatActivity {
     private Button btnGoToMainMenu;
@@ -16,6 +17,8 @@ public class AddFoundsActivity extends AppCompatActivity {
     private EditText cardNumberField;
     private EditText cvvField;
     private EditText expiryDateField;
+    private MediaPlayer mediaPlayer;
+    private MediaPlayer backgroundSound;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +30,13 @@ public class AddFoundsActivity extends AppCompatActivity {
         cardNumberField = findViewById(R.id.NumberCardfield);
         expiryDateField = findViewById(R.id.ExpiryCardfield);
 
+        mediaPlayer = MediaPlayer.create(this, R.raw.moneycomplete);
+        backgroundSound = MediaPlayer.create(this, R.raw.backgroundaddfounds);
+        backgroundSound.setLooping(true); // to play the sound in a loop
+        backgroundSound.start();
+
+        backgroundSound.setVolume(0.02f, 0.02f); //set the volume to 50%
+        mediaPlayer.setVolume(0.2f, 0.2f); //set the volume to 50%
         btnGoToMainMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -39,6 +49,7 @@ public class AddFoundsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 addFunds();
+                mediaPlayer.start();
             }
         });
 
@@ -110,4 +121,36 @@ public class AddFoundsActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+
+    protected void onPause() {
+        super.onPause();
+        if (backgroundSound != null) {
+            backgroundSound.pause();
+            if (isFinishing()) {
+                backgroundSound.stop();
+                backgroundSound.release();
+            }
+        }
+        if (backgroundSound != null) {
+            backgroundSound.pause();
+            if (isFinishing()) {
+                backgroundSound.stop();
+                backgroundSound.release();
+            }
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (backgroundSound != null) {
+            backgroundSound.release();
+            backgroundSound = null;
+        }
+        if (backgroundSound != null) {
+            backgroundSound.release();
+            backgroundSound = null;
+        }
+    }
+
 }
