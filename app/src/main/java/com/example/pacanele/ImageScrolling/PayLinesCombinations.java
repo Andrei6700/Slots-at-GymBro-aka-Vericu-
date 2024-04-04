@@ -2,9 +2,9 @@ package com.example.pacanele.ImageScrolling;
 
 
 public class PayLinesCombinations {
-    public static boolean PayLines1(ImageScrolling image, ImageScrolling image2, ImageScrolling image3,
+    public static boolean PayLines1(ImageScrolling image1, ImageScrolling image2, ImageScrolling image3,
                                     ImageScrolling image4, ImageScrolling image5) {
-        return image.getValue() == image2.getValue() && image2.getValue() == image3.getValue() &&
+        return image1.getValue() == image2.getValue() && image2.getValue() == image3.getValue() &&
                 image3.getValue() == image4.getValue() && image4.getValue() == image5.getValue();
     }
 

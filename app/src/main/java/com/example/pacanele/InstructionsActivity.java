@@ -17,7 +17,7 @@ public class InstructionsActivity extends AppCompatActivity {
 
     int[] instructionsImage = {R.drawable.gamblingadd, R.drawable.stopgambling, R.drawable.dependentajocuridenoroc,
             R.drawable.imaginejoc, R.drawable.payfirst,
-            R.drawable.payconfirm};
+            R.drawable.payconfirm}; //
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +42,7 @@ public class InstructionsActivity extends AppCompatActivity {
 
     private void setUpMovies() {
         String[] titles = getResources().getStringArray(R.array.title);
-        String[] messagesArray = getResources().getStringArray(R.array.message); // Changed variable name to avoid conflict
+        String[] messagesArray = getResources().getStringArray(R.array.message); // get the array from strings.xml
 
         for (int i = 0; i < titles.length; i++) {
             messages.add(new InstructionsHandler(titles[i], messagesArray[i], instructionsImage[i]));

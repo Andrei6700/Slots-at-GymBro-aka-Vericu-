@@ -62,7 +62,8 @@ public class ImageScrolling extends FrameLayout {
                 .setDuration(ANIMATION_DUR)
                 .setListener(new Animator.AnimatorListener() {
                     @Override
-                    public void onAnimationStart(@NonNull Animator animator) {}
+                    public void onAnimationStart(@NonNull Animator animator) {
+                    }
 
                     @Override
                     public void onAnimationEnd(@NonNull Animator animator) {
@@ -87,10 +88,12 @@ public class ImageScrolling extends FrameLayout {
                     }
 
                     @Override
-                    public void onAnimationCancel(@NonNull Animator animator) {}
+                    public void onAnimationCancel(@NonNull Animator animator) {
+                    }
 
                     @Override
-                    public void onAnimationRepeat(@NonNull Animator animator) {}
+                    public void onAnimationRepeat(@NonNull Animator animator) {
+                    }
                 });
     }
 
@@ -118,11 +121,6 @@ public class ImageScrolling extends FrameLayout {
     }
 
     public int getValue() {
-        if (next_image != null && next_image.getTag() != null) {
-            return Integer.parseInt(next_image.getTag().toString());
-        } else {
-            // Handle in cas if  next_image it s null
-            return -1;
-        }
+            return (int) next_image.getTag();
     }
 }

@@ -149,64 +149,64 @@ public class GamblingActivity extends AppCompatActivity implements IEventEnd {
                         FoundsStore.SCORE -= spinCost;
                         txt_score.setText(String.valueOf(FoundsStore.SCORE));
 
-                        image1.setValueRandom(new Random().nextInt(7),
-                                new Random().nextInt((15-5)+1)+5);
+                        image1.setValueRandom(new Random().nextInt(8),
+                                new Random().nextInt(8));
                         Log.v(TAG, "IMAGE 1 >>> "  );
 
-                        image2.setValueRandom(new Random().nextInt(7),
-                                new Random().nextInt((15-5)+1)+5);
+                        image2.setValueRandom(new Random().nextInt(8),
+                                new Random().nextInt(8));
                         Log.v(TAG, "IMAGE 2 >>> "  );
 
-                        image3.setValueRandom(new Random().nextInt(7),
-                                new Random().nextInt((15-5)+1)+5);
+                        image3.setValueRandom(new Random().nextInt(8),
+                                new Random().nextInt(8));
                         Log.v(TAG, "IMAGE 3 >>> "  );
 
-                        image4.setValueRandom(new Random().nextInt(7),
-                                new Random().nextInt((15-5)+1)+5);
+                        image4.setValueRandom(new Random().nextInt(8),
+                                new Random().nextInt(8));
                         Log.v(TAG, "IMAGE 4 >>> "  );
 
-                        image5.setValueRandom(new Random().nextInt(7),
-                                new Random().nextInt((15-5)+1)+5);
+                        image5.setValueRandom(new Random().nextInt(8),
+                                new Random().nextInt(8));
                         Log.v(TAG, "IMAGE 5 >>> "  );
 
-                        image6.setValueRandom(new Random().nextInt(7),
-                                new Random().nextInt((15-5)+1)+5);
+                        image6.setValueRandom(new Random().nextInt(8),
+                                new Random().nextInt(8));
                         Log.v(TAG, "IMAGE 6 >>> "  );
 
-                        image7.setValueRandom(new Random().nextInt(7),
-                                new Random().nextInt((15-5)+1)+5);
+                        image7.setValueRandom(new Random().nextInt(8),
+                                new Random().nextInt(8));
                         Log.v(TAG, "IMAGE 7 >>> "  );
 
-                        image8.setValueRandom(new Random().nextInt(7),
-                                new Random().nextInt((15-5)+1)+5);
+                        image8.setValueRandom(new Random().nextInt(8),
+                                new Random().nextInt(8));
                         Log.v(TAG, "IMAGE 8 >>> "  );
 
-                        image9.setValueRandom(new Random().nextInt(7),
-                                new Random().nextInt((15-5)+1)+5);
+                        image9.setValueRandom(new Random().nextInt(8),
+                                new Random().nextInt(8));
                         Log.v(TAG, "IMAGE 9 >>> "  );
 
-                        image10.setValueRandom(new Random().nextInt(7),
-                                new Random().nextInt((15-5)+1)+5);
+                        image10.setValueRandom(new Random().nextInt(8),
+                                new Random().nextInt(8));
                         Log.v(TAG, "IMAGE 10 >>> "  );
 
-                        image11.setValueRandom(new Random().nextInt(7),
-                                new Random().nextInt((15-5)+1)+5);
+                        image11.setValueRandom(new Random().nextInt(8),
+                                new Random().nextInt(8));
                         Log.v(TAG, "IMAGE 11 >>> "  );
 
-                        image12.setValueRandom(new Random().nextInt(7),
-                                new Random().nextInt((15-5)+1)+5);
+                        image12.setValueRandom(new Random().nextInt(8),
+                                new Random().nextInt(8));
                         Log.v(TAG, "IMAGE 12 >>> "  );
 
-                        image13.setValueRandom(new Random().nextInt(7),
-                                new Random().nextInt((15-5)+1)+5);
+                        image13.setValueRandom(new Random().nextInt(8),
+                                new Random().nextInt(8));
                         Log.v(TAG, "IMAGE 13 >>> "  );
 
-                        image14.setValueRandom(new Random().nextInt(7),
-                                new Random().nextInt((15-5)+1)+5);
+                        image14.setValueRandom(new Random().nextInt(8),
+                                new Random().nextInt(8));
                         Log.v(TAG, "IMAGE 14 >>> "  );
 
-                        image15.setValueRandom(new Random().nextInt(7),
-                                new Random().nextInt((15-5)+1)+5);
+                        image15.setValueRandom(new Random().nextInt(8),
+                                new Random().nextInt(8));
                         Log.v(TAG, "IMAGE 15 >>> "  );
 
                     } else {
@@ -217,40 +217,31 @@ public class GamblingActivity extends AppCompatActivity implements IEventEnd {
         });
     }
 
-        protected void onPause() {
-            super.onPause();
-            if (backgroundPlayer != null) {
+      @Override
+      protected void onPause() {
+          super.onPause();
+          if(backgroundPlayer !=null){
                 backgroundPlayer.pause();
                 if (isFinishing()) {
                     backgroundPlayer.stop();
                     backgroundPlayer.release();
                 }
-            }
-            if (backgroundPlayer != null) {
-                backgroundPlayer.pause();
-                if (isFinishing()) {
-                    backgroundPlayer.stop();
-                    backgroundPlayer.release();
-                }
-            }
-        }
+          }
+      }
 
-        @Override
-        protected void onDestroy() {
-            super.onDestroy();
-            if (backgroundPlayer != null) {
-                backgroundPlayer.release();
-                backgroundPlayer = null;
-            }
-            if (backgroundPlayer != null) {
-                backgroundPlayer.release();
-                backgroundPlayer = null;
-            }
-        }
+      @Override
+      protected void onDestroy() {
+          super.onDestroy();
+          if (backgroundPlayer != null) {
+              backgroundPlayer.stop();
+              backgroundPlayer.release();
+          }
+      }
 
     @Override
     public void eventEnd(int result, int count) {
         count_done++;
+        //  keep track of how many images have finished scrolling
         if (count_done < 15) // there are 15 images
             return;
         count_done = 0;
