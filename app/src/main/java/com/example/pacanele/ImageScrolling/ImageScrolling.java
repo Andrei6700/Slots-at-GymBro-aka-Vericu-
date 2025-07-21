@@ -79,10 +79,17 @@ public class ImageScrolling extends FrameLayout {
                             setValueRandom(image, rotate_count);
                             old_value++;
                         } else {
-                            // If rotation count is reached, set image for next_image and trigger eventEnd
-                            last_result = 0;
+                            // Rotation completed: show the final image on the visible view (current_image)
+                            last_result = 0; // reset the cached value before setting the final one
                             old_value = 0;
-                            setImage(next_image, image);
+
+                            // Ensure the image that remains visible after the final animation is the chosen one
+                            setImage(current_image, image);
+
+                            // Optionally keep next_image below the visible area
+                            next_image.setTranslationY(next_image.getHeight());
+
+                            // Notify listener that this reel has finished spinning
                             eventEnd.eventEnd(image % 8, rotate_count);
                         }
                     }
@@ -121,6 +128,8 @@ public class ImageScrolling extends FrameLayout {
     }
 
     public int getValue() {
-            return (int) next_image.getTag();
+        // Return the final symbol value that was set after the spin finished
+        // Using the cached last_result avoids relying on the view that might currently be hidden
+        return last_result;
     }
 }
